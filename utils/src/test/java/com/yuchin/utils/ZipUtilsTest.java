@@ -1,0 +1,56 @@
+package com.yuchin.utils;
+
+import com.yuchin.utils.util.FileUtils;
+import com.yuchin.utils.util.ZipUtils;
+
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
+
+import static com.yuchin.utils.TestConfig.PATH_TEMP;
+import static com.yuchin.utils.TestConfig.PATH_ZIP;
+import static org.junit.Assert.assertTrue;
+
+/**
+ * <pre>
+ *     author: Blankj
+ *     blog  : http://blankj.com
+ *     time  : 2016/09/10
+ *     desc  : ZipUtils 單元測試
+ * </pre>
+ */
+public class ZipUtilsTest {
+
+    private String zipFile = PATH_TEMP + "zipFile.zip";
+
+    @Before
+    public void setUp() throws Exception {
+        FileUtils.createOrExistsDir(PATH_TEMP);
+        assertTrue(ZipUtils.zipFile(PATH_ZIP, zipFile, "測試zip"));
+    }
+
+    @Test
+    public void unzipFile() throws Exception {
+        System.out.println(ZipUtils.unzipFile(zipFile, PATH_TEMP));
+    }
+
+    @Test
+    public void unzipFileByKeyword() throws Exception {
+        System.out.println((ZipUtils.unzipFileByKeyword(zipFile, PATH_TEMP, null)).toString());
+    }
+
+    @Test
+    public void getFilesPath() throws Exception {
+        System.out.println(ZipUtils.getFilesPath(zipFile));
+    }
+
+    @Test
+    public void getComments() throws Exception {
+        System.out.println(ZipUtils.getComments(zipFile));
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        FileUtils.deleteAllInDir(PATH_TEMP);
+    }
+}
