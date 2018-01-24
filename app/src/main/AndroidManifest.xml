@@ -18,6 +18,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".activity.SecondActivity"></activity>
+
+        <activity
+            android:name="com.yuchin.utils.util.PermissionUtils$PermissionActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:taskAffinity="com.blankj.utilcode.util.PermissionUtils.PermissionActivity"
+            android:windowSoftInputMode="stateHidden|stateAlwaysHidden" />
     </application>
 
 </manifest>

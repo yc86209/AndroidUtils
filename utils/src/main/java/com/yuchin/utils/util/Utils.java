@@ -123,6 +123,7 @@ public final class Utils {
     }
 
     private static void setTopActivityWeakRef(Activity activity) {
+        if (activity.getClass() == PermissionUtils.PermissionActivity.class) return;
         if (sTopActivityWeakRef == null || !activity.equals(sTopActivityWeakRef.get())) {
             sTopActivityWeakRef = new WeakReference<>(activity);
         }
