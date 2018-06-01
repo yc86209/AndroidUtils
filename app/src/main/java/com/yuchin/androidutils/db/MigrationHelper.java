@@ -3,10 +3,8 @@ package com.yuchin.androidutils.db;
 import android.database.Cursor;
 import android.text.TextUtils;
 import android.util.Log;
-
 import com.socks.library.KLog;
-import com.yuchin.androidutils.gen.DaoMaster;
-
+import com.yuchin.androidutils.entity.DaoMaster;
 import org.greenrobot.greendao.AbstractDao;
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.internal.DaoConfig;

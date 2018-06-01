@@ -1,15 +1,7 @@
 package com.yuchin.androidutils.entity;
 
-import com.yuchin.androidutils.gen.BookDao;
-import com.yuchin.androidutils.gen.DaoSession;
-import com.yuchin.androidutils.gen.UserDao;
-
 import org.greenrobot.greendao.DaoException;
-import org.greenrobot.greendao.annotation.Entity;
-import org.greenrobot.greendao.annotation.Generated;
-import org.greenrobot.greendao.annotation.Id;
-import org.greenrobot.greendao.annotation.JoinProperty;
-import org.greenrobot.greendao.annotation.ToMany;
+import org.greenrobot.greendao.annotation.*;
 
 import java.util.List;
 

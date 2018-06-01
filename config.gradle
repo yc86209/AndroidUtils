@@ -1,0 +1,29 @@
+
+ext {
+    android = [
+            applicationId    : "com.yuchin.androidutils",
+            compileSdkVersion: 27,
+            buildToolsVersion: "27.0.3",
+            minSdkVersion    : 19,
+            targetSdkVersion : 27,
+    ]
+
+    dependencies = [
+            "junit"                 : "junit:junit:4.12",
+            "robolectric"           : "org.robolectric:robolectric:3.8",
+            "runner"                : "com.android.support.test:runner:1.0.2",
+            "espresso-core"         : "com.android.support.test.espresso:espresso-core:3.0.2",
+            "espresso-contrib"      : "com.android.support.test.espresso:espresso-contrib:3.0.1",
+            "appcompat-v7"          : "com.android.support:appcompat-v7:27.1.1",
+            "design"                : "com.android.support:design:27.1.1",
+            "constraint-layout"     : "com.android.support.constraint:constraint-layout:1.1.0",
+            "gson"                  : "com.google.code.gson:gson:2.8.5",
+            "butterknife"           : "com.jakewharton:butterknife:8.8.1",
+            "butterknife-compiler"  : "com.jakewharton:butterknife-compiler:8.8.1",
+            "klog"                  : "com.github.zhaokaiqiang.klog:library:1.6.0",
+            "picasso"               : "com.squareup.picasso:picasso:2.71828",
+            "eventbus"              : "org.greenrobot:eventbus:3.1.1",
+            "greendao"              : "org.greenrobot:greendao:3.2.2",
+            "logging-interceptor"   : "com.squareup.okhttp3:logging-interceptor:3.0.1"
+    ]
+}

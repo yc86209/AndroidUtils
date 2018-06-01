@@ -2,11 +2,9 @@ package com.yuchin.androidutils.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-
 import com.socks.library.KLog;
-import com.yuchin.androidutils.gen.DaoMaster;
-import com.yuchin.androidutils.gen.UserDao;
-
+import com.yuchin.androidutils.entity.DaoMaster;
+import com.yuchin.androidutils.entity.UserDao;
 import org.greenrobot.greendao.database.Database;
 
 /**

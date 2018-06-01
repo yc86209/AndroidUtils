@@ -2,13 +2,11 @@ package com.yuchin.androidutils.db;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
-
 import com.yuchin.androidutils.BuildConfig;
+import com.yuchin.androidutils.entity.DaoMaster;
+import com.yuchin.androidutils.entity.DaoSession;
 import com.yuchin.androidutils.entity.User;
-import com.yuchin.androidutils.gen.DaoMaster;
-import com.yuchin.androidutils.gen.DaoSession;
-import com.yuchin.androidutils.gen.UserDao;
-
+import com.yuchin.androidutils.entity.UserDao;
 import org.greenrobot.greendao.annotation.NotNull;
 import org.greenrobot.greendao.database.Database;
 import org.greenrobot.greendao.query.QueryBuilder;
