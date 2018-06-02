@@ -28,6 +28,7 @@ android {
         }
 
     }
+
     testOptions {
         unitTests {
             includeAndroidResources = true
@@ -39,10 +40,11 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    // 讀取簽名配置
+    //region 讀取簽名配置
     getSigningProperties()
+    //endregion
 
-    // 讀取版本配置
+    //region 讀取版本配置 versionName "${versionMajor}.${versionMinor}.${versionPatch}.${versionBuild}"
     def versionPropsFile = file('version.properties')
     Properties versionProps = new Properties()
 
@@ -93,9 +95,11 @@ android {
     } else {
         throw new FileNotFoundException("Could not read version.properties!")
     }
+    //endregion
 
+    //region copyApkFiles from 'build/outputs/apk/release', 'build/outputs/apk/debug'    into '../apk'
     task copyApkFiles(type: Copy) {
-        from 'build/outputs/apk/release' ,
+        from 'build/outputs/apk/release',
                 'build/outputs/apk/debug'
         into '../apk'
     }
@@ -112,6 +116,7 @@ android {
             }
         }
     }
+    //endregion
 }
 
 greendao {
