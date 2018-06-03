@@ -40,11 +40,11 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    //region 讀取簽名配置
+    //region 簽名配置
     getSigningProperties()
     //endregion
 
-    //region 讀取版本配置 versionName "${versionMajor}.${versionMinor}.${versionPatch}.${versionBuild}"
+    //region 版本配置 versionName "${versionMajor}.${versionMinor}.${versionPatch}.${versionBuild}"
     def versionPropsFile = file('version.properties')
     Properties versionProps = new Properties()
 
@@ -161,7 +161,7 @@ static def releaseTime() {
     return new Date().format("yyyyMMdd_HHmmss")
 }
 
-// 讀取簽名配置
+// 簽名配置
 def getSigningProperties() {
     def propFile = file('../keystore.properties')
     def configName = 'release'

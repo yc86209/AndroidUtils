@@ -1,9 +1,13 @@
 package com.yuchin.androidutils;
 
+import android.annotation.SuppressLint;
+import android.app.Application;
+import com.blankj.utilcode.util.AppUtils;
+import com.blankj.utilcode.util.CrashUtils;
+import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.Utils;
 import com.socks.library.KLog;
 import com.yuchin.androidutils.db.DBManager;
-import com.yuchin.utils.base.BaseApplication;
-import com.yuchin.utils.util.CrashUtils;
 
 
 /**
@@ -12,9 +16,9 @@ import com.yuchin.utils.util.CrashUtils;
  **/
 
 
-public class UtilsApp extends BaseApplication {
+public class UtilsApp extends Application {
     // TODO: 2017/12/25 DEBUG
-    public static final boolean DEBUG = true;
+    public static final boolean DEBUG = BuildConfig.DEBUG;
 
     private static UtilsApp sInstance;
 
@@ -26,7 +30,7 @@ public class UtilsApp extends BaseApplication {
     public void onCreate() {
         super.onCreate();
         sInstance = this;
-        com.yuchin.utils.util.Utils.init(this);
+        Utils.init(this);
         initLeakCanary();
         initLog();
         initCrash();
@@ -69,10 +73,16 @@ public class UtilsApp extends BaseApplication {
         KLog.init(DEBUG);
     }
 
+    @SuppressLint("MissingPermission")
     private void initCrash() {
-        CrashUtils.init();
+        CrashUtils.init(new CrashUtils.OnCrashListener() {
+            @Override
+            public void onCrash(String crashInfo, Throwable e) {
+                LogUtils.e(crashInfo);
+                AppUtils.relaunchApp();
+            }
+        });
     }
-
     private void initAssets() {
 //        if (!FileUtils.isFileExists(Config.TEST_APK_PATH)) {
 //            ThreadPoolUtils poolUtils = new ThreadPoolUtils(ThreadPoolUtils.SingleThread, 1);

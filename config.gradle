@@ -2,6 +2,7 @@
 ext {
     android = [
             applicationId    : "com.yuchin.androidutils",
+            applicationId    : "com.yuchin.androidutils",
             compileSdkVersion: 27,
             buildToolsVersion: "27.0.3",
             minSdkVersion    : 19,
@@ -15,6 +16,7 @@ ext {
             "espresso-core"         : "com.android.support.test.espresso:espresso-core:3.0.2",
             "espresso-contrib"      : "com.android.support.test.espresso:espresso-contrib:3.0.1",
             "appcompat-v7"          : "com.android.support:appcompat-v7:27.1.1",
+            "support-v4"            : "com.android.support:support-v4:27.1.1",
             "design"                : "com.android.support:design:27.1.1",
             "constraint-layout"     : "com.android.support.constraint:constraint-layout:1.1.0",
             "gson"                  : "com.google.code.gson:gson:2.8.5",

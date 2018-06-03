@@ -3,10 +3,9 @@ package com.yuchin.androidutils.helper;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
-
+import com.blankj.utilcode.util.ActivityUtils;
+import com.blankj.utilcode.util.PermissionUtils;
 import com.yuchin.androidutils.R;
-import com.yuchin.utils.util.ActivityUtils;
-import com.yuchin.utils.util.PermissionUtils;
 
 /**
  * <pre>
@@ -51,7 +50,7 @@ public class DialogHelper {
                 .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        PermissionUtils.openAppSettings();
+                        PermissionUtils.launchAppDetailsSettings();
                     }
                 })
                 .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
@@ -64,5 +63,4 @@ public class DialogHelper {
                 .create()
                 .show();
     }
-
 }

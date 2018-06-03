@@ -1,8 +1,8 @@
 package com.yuchin.androidutils.helper;
 
-import com.yuchin.utils.constant.PermissionConstants;
-import com.yuchin.utils.util.LogUtils;
-import com.yuchin.utils.util.PermissionUtils;
+import com.blankj.utilcode.constant.PermissionConstants;
+import com.blankj.utilcode.util.LogUtils;
+import com.blankj.utilcode.util.PermissionUtils;
 
 import java.util.List;
 
@@ -15,6 +15,10 @@ import java.util.List;
  * </pre>
  */
 public class PermissionHelper {
+
+    public static void requestCamera(final OnPermissionGrantedListener listener) {
+        request(listener, PermissionConstants.CAMERA);
+    }
 
     public static void requestStorage(final OnPermissionGrantedListener listener) {
         request(listener, PermissionConstants.STORAGE);

@@ -6,14 +6,14 @@
     "apkInfo": {
       "type": "MAIN",
       "splits": [],
-      "versionCode": 33,
-      "versionName": "1.0.33.202",
+      "versionCode": 35,
+      "versionName": "1.0.35.204",
       "enabled": true,
-      "outputFile": "com.yuchin.androidutils_20180602_114550-v1.0.33.202.apk",
+      "outputFile": "com.yuchin.androidutils_20180602_120241-v1.0.35.204.apk",
       "fullName": "release",
       "baseName": "release"
     },
-    "path": "com.yuchin.androidutils_20180602_114550-v1.0.33.202.apk",
+    "path": "com.yuchin.androidutils_20180602_120241-v1.0.35.204.apk",
     "properties": {}
   }
 ]

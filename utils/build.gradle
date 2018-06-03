@@ -1,38 +1,80 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion rootProject.ext.android.compileSdkVersion
 
-    defaultConfig {
-        minSdkVersion 19
-        targetSdkVersion 27
-        versionCode 1
-        versionName "1.0"
+    //region 版本配置 versionName "${versionMajor}.${versionMinor}.${versionPatch}.${versionBuild}"
+    def versionPropsFile = file('version.properties')
+    Properties versionProps = new Properties()
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
-
+    if (!versionPropsFile.exists()) {
+        versionProps['VERSION_PATCH'] = "0"
+        versionProps['VERSION_NUMBER'] = "0"
+        versionProps['VERSION_BUILD'] = "-1"
+        // I set it to minus one so the first build is 0 which isn't super important.
+        versionProps.store(versionPropsFile.newWriter(), null)
     }
+
+    if (versionPropsFile.canRead()) {
+        versionProps.load(new FileInputStream(versionPropsFile))
+        def value = 0
+        if (project.hasProperty("assemble")
+                || project.hasProperty("assembleRelease")
+                || project.hasProperty("aR")) {
+            value = 1
+        }
+
+        def versionMajor = 1
+        def versionMinor = 0
+        def versionPatch = versionProps['VERSION_PATCH'].toInteger() + value
+        def versionBuild = versionProps['VERSION_BUILD'].toInteger() + 1
+
+        versionProps['VERSION_PATCH'] = versionPatch.toString()
+        versionProps['VERSION_BUILD'] = versionBuild.toString()
+
+        versionProps.store(versionPropsFile.newWriter(), null)
+
+        defaultConfig {
+            minSdkVersion rootProject.ext.android.minSdkVersion
+            targetSdkVersion rootProject.ext.android.targetSdkVersion
+            versionCode versionPatch
+            versionName "${versionMajor}.${versionMinor}.${versionPatch}.${versionBuild}"
+            testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        }
+    } else {
+        throw new FileNotFoundException("Could not read version.properties!")
+    }
+    //endregion
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            consumerProguardFiles 'proguard-rules.pro'
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
 
+    lintOptions {
+        abortOnError false
+    }
+
+    testOptions.unitTests.all {
+        testLogging {
+            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+        }
+    }
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // App's dependencies, including test
+    compileOnly rootProject.ext.dependencies["appcompat-v7"]
+    compileOnly rootProject.ext.dependencies["design"]
 
-    testImplementation 'junit:junit:4.12'
-    testImplementation "org.robolectric:robolectric:3.8"
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    // Dependencies for local unit tests
+    testImplementation rootProject.ext.dependencies["junit"]
+    testImplementation rootProject.ext.dependencies["support-v4"]
 
-    implementation 'com.android.support:appcompat-v7:27.0.2'
-    implementation "com.android.support:design:27.0.2"
-    implementation 'com.android.support:exifinterface:27.0.2'
+    // Dependencies for Android unit tests
+    androidTestImplementation rootProject.ext.dependencies["robolectric"]
 }
-
-
+//gradle bintrayUpload
